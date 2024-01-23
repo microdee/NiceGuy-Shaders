@@ -44,14 +44,14 @@ uniform bool SharpenGI <
 	ui_tooltip = "(No performance impact) Further improves the edge clarity. Try Catrom resampling first tho.";
 > = 1;
 
-uniform float fov <
+uniform float2 fov <
 	ui_label = "Field of View";
 	ui_type = "slider";
 	ui_category = "Ray Tracing";
-	ui_tooltip = "Set it according to the game's field of view.";
-	ui_min = 50;
-	ui_max = 120;
-> = 70;
+	ui_tooltip = "Set it according to the game's field of view. (Horizontal / Vertical)";
+	ui_min = 30;
+	ui_max = 150;
+> = float2(70, 70);
 
 uniform float BUMP <
 	ui_label = "Bump mapping";
