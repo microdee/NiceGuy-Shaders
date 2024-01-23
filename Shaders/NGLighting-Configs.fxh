@@ -4,8 +4,12 @@
  #define UI_DIFFICULTY 0
 #endif
 
-#ifndef USE_LAUNCHPAD
- #define USE_LAUNCHPAD 0
+#ifndef USE_LAUNCHPAD_NORMALS
+ #define USE_LAUNCHPAD_NORMALS 0
+#endif
+
+#ifndef USE_LAUNCHPAD_VELOCITY
+ #define USE_LAUNCHPAD_VELOCITY 0
 #endif
 
 #ifndef SMOOTH_NORMALS
@@ -42,7 +46,7 @@
 //Smooth Normals configs. It uses a separable bilateral blur which uses only normals as determinator. 
 #define SNThreshold 2.5 //Bilateral Blur Threshold for Smooth normals passes. default is 0.5
 #define SNDepthW FAR_PLANE*1*SNThreshold //depth weight as a determinator. default is 100/SNThreshold
-#define ENABLE_SMOOTH_NORMALS SMOOTH_NORMALS > 0 && !USE_LAUNCHPAD
+#define ENABLE_SMOOTH_NORMALS SMOOTH_NORMALS > 0 && !USE_LAUNCHPAD_NORMALS
 #if ENABLE_SMOOTH_NORMALS
     #if SMOOTH_NORMALS <= 1 //13*13 8taps
         #define LODD 0.5    //Don't touch this for God's sake

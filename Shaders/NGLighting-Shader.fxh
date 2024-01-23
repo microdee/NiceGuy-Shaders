@@ -83,7 +83,7 @@ sampler sTexColor {Texture = TexColor; SRGBTexture = false;};
 texture TexDepth : DEPTH;
 sampler sTexDepth {Texture = TexDepth;};
 
-#if USE_LAUNCHPAD
+#if USE_LAUNCHPAD_NORMALS || USE_LAUNCHPAD_VELOCITY
 namespace Deferred 
 {
 	texture MotionVectorsTex { Width = BUFFER_WIDTH; Height = BUFFER_HEIGHT; Format = RG16F; };
@@ -122,7 +122,7 @@ sampler sSSSR_PNormalTex { Texture = SSSR_PNormalTex; };
 texture SSSR_NormTex  { Width = BUFFER_WIDTH; Height = BUFFER_HEIGHT; Format = RGBA16f; };
 sampler sSSSR_NormTex { Texture = SSSR_NormTex; };
 
-#if USE_LAUNCHPAD
+#if USE_LAUNCHPAD_NORMALS
 sampler sLaunchpadNormTex { Texture = Deferred::NormalsTex; AddressU = Clamp; AddressV = Clamp; };
 #endif
 
@@ -570,7 +570,7 @@ void GBuffer1
 	out float4 normal : SV_Target0,
 	out float roughness : SV_Target1) //SSSR_NormTex
 {
-#if USE_LAUNCHPAD
+#if USE_LAUNCHPAD_NORMALS
 	float2 encodedNormals = tex2Dfetch(sLaunchpadNormTex, uint2(vpos.xy)).xy;
 	normal.rgb = octahedral_dec(encodedNormals);
 #else
