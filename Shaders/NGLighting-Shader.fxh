@@ -298,8 +298,8 @@ float3 UVtoPos(float2 texcoord)
 {
 	float3 scrncoord = float3(texcoord.xy*2-1, LDepth(texcoord) * FAR_PLANE);
 	scrncoord.xy *= scrncoord.z;
-	scrncoord.x *= AspectRatio;
 	scrncoord.xy *= rad(fov);
+	scrncoord.x *= AspectRatio;
 	//scrncoord.xy *= ;
 	
 	return scrncoord.xyz;
@@ -309,8 +309,8 @@ float3 UVtoPos(float2 texcoord, float depth)
 {
 	float3 scrncoord = float3(texcoord.xy*2-1, depth * FAR_PLANE);
 	scrncoord.xy *= scrncoord.z;
-	scrncoord.x *= AspectRatio;
 	scrncoord *= rad(fov);
+	scrncoord.x *= AspectRatio;
 	//scrncoord.xy *= ;
 	
 	return scrncoord.xyz;
@@ -319,8 +319,8 @@ float3 UVtoPos(float2 texcoord, float depth)
 float2 PostoUV(float3 position)
 {
 	float2 scrnpos = position.xy;
-	scrnpos /= rad(fov);
 	scrnpos.x /= AspectRatio;
+	scrnpos /= rad(fov);
 	scrnpos /= position.z;
 	
 	return scrnpos/2 + 0.5;

@@ -45,7 +45,7 @@ uniform float2 fov <
 	ui_type = "slider";
 	ui_category = "Ray Tracing";
 	ui_tooltip = "Set it according to the game's field of view. (Horizontal / Vertical)";
-	ui_min = 30;
+	ui_min = 0;
 	ui_max = 150;
 > = float2(70, 70);
 
